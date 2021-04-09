@@ -12,7 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using RecipeKeeper.Models;
 
-namespace RecipeKeeper
+namespace RecipeKeeper.Data
 {
     public class EmailService : IIdentityMessageService
     {

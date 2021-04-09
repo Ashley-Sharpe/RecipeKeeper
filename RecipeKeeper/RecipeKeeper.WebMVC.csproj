@@ -174,7 +174,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -251,6 +250,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RecipeKeeper.Data\RecipeKeeper.Data.csproj">
+      <Project>{35858f89-2ba8-4724-a357-450b9fca8b94}</Project>
+      <Name>RecipeKeeper.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecipeKeeper.Models\RecipeKeeper.Models.csproj">
+      <Project>{563d6dc8-252d-4925-80d1-609941076405}</Project>
+      <Name>RecipeKeeper.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecipeKeeper.Services\RecipeKeeper.Services.csproj">
+      <Project>{2a07d1d2-34dc-4b8e-a405-51cb093ac4bb}</Project>
+      <Name>RecipeKeeper.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
