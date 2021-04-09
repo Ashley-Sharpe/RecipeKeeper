@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeKeeper", "RecipeKeeper\RecipeKeeper.csproj", "{FCCD62EA-0A64-498F-93F3-63AB3B2BEA27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeKeeper.Tests", "RecipeKeeper.Tests\RecipeKeeper.Tests.csproj", "{8AF9E3AD-DD6E-49F6-BF46-36ACF549FF1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCCD62EA-0A64-498F-93F3-63AB3B2BEA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCCD62EA-0A64-498F-93F3-63AB3B2BEA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCCD62EA-0A64-498F-93F3-63AB3B2BEA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCCD62EA-0A64-498F-93F3-63AB3B2BEA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF9E3AD-DD6E-49F6-BF46-36ACF549FF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF9E3AD-DD6E-49F6-BF46-36ACF549FF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF9E3AD-DD6E-49F6-BF46-36ACF549FF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF9E3AD-DD6E-49F6-BF46-36ACF549FF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0D94AEC-2D6E-4200-978C-6029835433DB}
+	EndGlobalSection
+EndGlobal
