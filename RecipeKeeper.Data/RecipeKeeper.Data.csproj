@@ -57,6 +57,15 @@
     <Compile Include="Book.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Ingredient.cs" />
+    <Compile Include="Migrations\202104120207302_InitialCreate.cs" />
+    <Compile Include="Migrations\202104120207302_InitialCreate.Designer.cs">
+      <DependentUpon>202104120207302_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120315271_InitialMigration.cs" />
+    <Compile Include="Migrations\202104120315271_InitialMigration.Designer.cs">
+      <DependentUpon>202104120315271_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pantry.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +73,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202104120207302_InitialCreate.resx">
+      <DependentUpon>202104120207302_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120315271_InitialMigration.resx">
+      <DependentUpon>202104120315271_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
