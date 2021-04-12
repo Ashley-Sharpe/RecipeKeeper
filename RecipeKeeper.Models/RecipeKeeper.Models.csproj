@@ -57,6 +57,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookListItem.cs" />
     <Compile Include="Ingredient.cs" />
+    <Compile Include="IngredientListItem.cs" />
     <Compile Include="Pantry.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

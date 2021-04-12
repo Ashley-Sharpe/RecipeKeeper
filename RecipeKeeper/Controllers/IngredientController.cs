@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeKeeper.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace RecipeKeeper.Controllers
         // GET: Ingredient
         public ActionResult Index()
         {
-            return View();
+            var model = new IngredientListItem[0];
+            return View(model);
         }
     }
 }
