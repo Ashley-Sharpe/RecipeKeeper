@@ -10,9 +10,9 @@ namespace RecipeKeeper.Data
 {
     public class Pantry
     {
-        [ForeignKey(nameof(Ingredient))]
-        public int IngredientId { get; set; }
-        public virtual Ingredient Ingredient { get; set; }
+        
+        [Key]
+        public int PantryId { get; set; }
         public string IngredientName { get; set; }
         [Required]
         public bool InStock { get; set; }
