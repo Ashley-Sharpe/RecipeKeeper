@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="BookListItem.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="Pantry.cs" />
     <Compile Include="Recipe.cs" />
