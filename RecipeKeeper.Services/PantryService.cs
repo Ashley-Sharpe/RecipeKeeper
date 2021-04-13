@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipeKeeper.Services
 {
-    public class Pantry
+    public class PantryService
     {
     }
 }

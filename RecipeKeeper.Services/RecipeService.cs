@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace RecipeKeeper.Services
 {
-    public class Book
+    public class RecipeService
     {
+        private readonly Guid _userId;
+
+        public RecipeService(Guid userId)
+        {
+            _userId = userId;
+        }
+
     }
 }

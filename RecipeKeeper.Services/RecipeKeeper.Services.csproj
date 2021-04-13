@@ -54,15 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="Ingredient.cs" />
-    <Compile Include="Pantry.cs" />
+    <Compile Include="BookService.cs" />
+    <Compile Include="IngredientService.cs" />
+    <Compile Include="PantryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipe.cs" />
+    <Compile Include="RecipeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RecipeKeeper.Data\RecipeKeeper.Data.csproj">
+      <Project>{35858f89-2ba8-4724-a357-450b9fca8b94}</Project>
+      <Name>RecipeKeeper.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecipeKeeper.Models\RecipeKeeper.Models.csproj">
+      <Project>{563d6dc8-252d-4925-80d1-609941076405}</Project>
+      <Name>RecipeKeeper.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
