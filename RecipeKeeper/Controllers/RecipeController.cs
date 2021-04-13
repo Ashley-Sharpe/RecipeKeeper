@@ -1,4 +1,6 @@
-﻿using RecipeKeeper.Models;
+﻿using Microsoft.AspNet.Identity;
+using RecipeKeeper.Models;
+using RecipeKeeper.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace RecipeKeeper.Controllers
         // GET: Recipe
         public ActionResult Index()
         {
-            var model = new RecipeListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new RecipeService(userId);
+            var model = service.GetRecipes();
             return View(model);
         }
 
@@ -28,11 +32,15 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RecipeCreate model)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new RecipeService(userId);
+            service.CreateRecipe(model);
+
+            return RedirectToAction("Index");
         }
     }
 }
