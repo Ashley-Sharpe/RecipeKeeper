@@ -12,6 +12,7 @@ namespace RecipeKeeper.Data
     {
         [Key]
         public int RecipeId { get; set; }
+        public Guid OwnerId { get; set; }
         public string RecipeName { get; set; }
         [Required]
         public string Ingredients { get; set; }
