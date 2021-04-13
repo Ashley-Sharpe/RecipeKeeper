@@ -16,5 +16,12 @@ namespace RecipeKeeper.Controllers
             var model = new RecipeListItem[0];
             return View(model);
         }
+
+        // GET : Create
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipeKeeper.Models
 {
+    
     public class RecipeListItem
     {
         public int RecipeId { get; set; }
