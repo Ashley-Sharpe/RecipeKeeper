@@ -242,7 +242,7 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
     <Content Include="Views\Pantry\Index.cshtml" />
-    <Content Include="Views\Recipe\Create.cshtml" />
+    <Content Include="Views\Ingredient\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

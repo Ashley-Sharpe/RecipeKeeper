@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeKeeper.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace RecipeKeeper.Models
     {
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
-        public string Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
     }

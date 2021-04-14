@@ -32,6 +32,10 @@ namespace RecipeKeeper.Data
             return new ApplicationDbContext();
         }
         public DbSet<Recipe> Recipes  { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Pantry> Pantry{ get; set; }
+        public DbSet<Book> Books { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
            modelBuilder

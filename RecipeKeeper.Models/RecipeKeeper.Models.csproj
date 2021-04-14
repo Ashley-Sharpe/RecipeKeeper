@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookListItem.cs" />
+    <Compile Include="IngredientCreate.cs" />
     <Compile Include="IngredientListItem.cs" />
     <Compile Include="PantryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +65,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RecipeKeeper.Data\RecipeKeeper.Data.csproj">
+      <Project>{35858f89-2ba8-4724-a357-450b9fca8b94}</Project>
+      <Name>RecipeKeeper.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

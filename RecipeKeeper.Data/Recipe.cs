@@ -15,7 +15,7 @@ namespace RecipeKeeper.Data
         public Guid OwnerId { get; set; }
         public string RecipeName { get; set; }
         [Required]
-        public string Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
         [Required]

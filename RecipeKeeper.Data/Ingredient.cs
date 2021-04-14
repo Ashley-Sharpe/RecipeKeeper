@@ -12,15 +12,16 @@ namespace RecipeKeeper.Data
     {
         [Key]
         public int IngredientId { get; set; }
+        [Required]
+        public string IngredientName { get; set; }
         [ForeignKey("Pantry")]
         public int PantryId { get; set; }
         public virtual Pantry Pantry { get; set; }
-
-        public string IngredientName { get; set; }
-        [ForeignKey("Recipe")]
+        public List<Recipe> Recipes {get;set;}
+        
+        [ForeignKey("Recipe")] // public collection of recipes
         public int RecipeId { get; set; }
         public virtual Recipe Recipe { get; set; }
 
-        
     }
 }

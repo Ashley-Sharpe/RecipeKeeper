@@ -27,6 +27,14 @@ namespace RecipeKeeper.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+       //     context.Authors.AddOrUpdate(x => x.Id,
+       //new Author() { Id = 1, Name = "Jane Austen" },
+       //new Author() { Id = 2, Name = "Charles Dickens" },
+       //new Author() { Id = 3, Name = "Miguel de Cervantes" }
+       //);
+       //     context.Ingredients.
+       //     new Ingredient { Ingredient }
+
         }
     }
 }

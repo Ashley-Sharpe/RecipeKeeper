@@ -11,7 +11,7 @@ namespace RecipeKeeper.Services
     public class RecipeService
     {
         private readonly Guid _userId;
-
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
         public RecipeService(Guid userId)
         {
             _userId = userId;
