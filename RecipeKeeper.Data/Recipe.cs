@@ -19,7 +19,7 @@ namespace RecipeKeeper.Data
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
         [Required]
-        [Display(Description ="Cooking or Baking recipe.")]
+        [Display(Description = "Cooking or Baking recipe.")]
         public string RecipeType { get; set; }
         [Required]
         public string CuisineType { get; set; }
@@ -28,5 +28,11 @@ namespace RecipeKeeper.Data
         [ForeignKey("Book")]
         public int BookId { get; set; }
         public virtual Book Book { get; set; }
+
+        public virtual ICollection<Ingredient> ListOfIngredients { get; set; }
+        public Recipe()
+        {
+            ListOfIngredients = new HashSet<Ingredient>();
+        }
     }
 }

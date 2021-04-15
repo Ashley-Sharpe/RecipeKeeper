@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeKeeper.Services
+namespace RecipeKeeper.service
 {
     public class RecipeService
     {
@@ -49,7 +49,7 @@ namespace RecipeKeeper.Services
                     e =>
                     new RecipeListItem
                     {
-                        RecipeId = e.RecipeId,
+                      
                         RecipeName = e.RecipeName,
                         Ingredients = e.Ingredients
                     }

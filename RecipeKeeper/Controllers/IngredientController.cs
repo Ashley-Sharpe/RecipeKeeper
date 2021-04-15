@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RecipeKeeper.Data;
+using static RecipeKeeper.Data.Ingredient;
+using RecipeKeeper.service;
 
 namespace RecipeKeeper.Controllers
 {
     [Authorize]
     public class IngredientController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Ingredient
         public ActionResult Index()
         {
-            var model = new IngredientListItem[0];
+            var service = new IngredientService();
+            var model = service.GetIngredients();
+            
             return View(model);
         }
         //GET: Create Ingredient
@@ -26,11 +32,19 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IngredientCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+               return View(model);
+           
             }
-            return View(model);
+            var service = new IngredientService();
+            service.CreateIngredient(model);
+            return RedirectToAction("Index");
+
+         
+
+
+            
         }
 
     }

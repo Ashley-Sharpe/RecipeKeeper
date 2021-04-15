@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using RecipeKeeper.Models;
-using RecipeKeeper.Services;
+using RecipeKeeper.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;

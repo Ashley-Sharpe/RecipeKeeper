@@ -7,13 +7,13 @@ namespace RecipeKeeper.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class SecondMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SecondMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104120207302_InitialCreate"; }
+            get { return "202104150552066_SecondMigration"; }
         }
         
         string IMigrationMetadata.Source

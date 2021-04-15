@@ -20,6 +20,6 @@ namespace RecipeKeeper.Data
         public string Location { get; set; }
         [Required]
         [MaxLength(100)]
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace RecipeKeeper.Models
     {
         [Required]
         public string IngredientName { get; set; }
-        
+        public string IngredientType { get; set; }
     }
 }
