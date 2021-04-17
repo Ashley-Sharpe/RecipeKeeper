@@ -5,15 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeKeeper.Data
+namespace RecipeKeeper.Models
 {
-    public class Book
+    public class BookCreate
     {
-        [Key]
-        public int BookId { get; set; }
-        [Display(Name ="Title of the book")]
+      [Required]
+      [MaxLength(100, ErrorMessage ="The book title is too long!")]
+      [Display(Name ="Book Title")]
         public string BookName { get; set; }
+       [MaxLength(100,ErrorMessage ="The author's name is too long!")]
         public string Author { get; set; }
-        public Guid OwnerId { get; set; }
+
+        
+
     }
 }
