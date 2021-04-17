@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookService.cs" />
+    <Compile Include="FavoriteService.cs" />
     <Compile Include="IngredientService.cs" />
     <Compile Include="PantryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

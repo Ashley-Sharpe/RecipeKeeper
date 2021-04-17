@@ -55,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookListItem.cs" />
+    <Compile Include="FavoriteCreate.cs" />
+    <Compile Include="FavoriteDetail.cs" />
+    <Compile Include="FavoriteEdit.cs" />
+    <Compile Include="FavoriteListItem.cs" />
     <Compile Include="IngredientCreate.cs" />
     <Compile Include="IngredientDetail.cs" />
     <Compile Include="IngredientEdit.cs" />

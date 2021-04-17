@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="Favorite.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="Migrations\202104150152271_InitialMigration.cs" />
