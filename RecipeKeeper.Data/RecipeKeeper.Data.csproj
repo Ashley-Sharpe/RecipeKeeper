@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202104150552066_SecondMigration.Designer.cs">
       <DependentUpon>202104150552066_SecondMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104160241371_Third.cs" />
+    <Compile Include="Migrations\202104160241371_Third.Designer.cs">
+      <DependentUpon>202104160241371_Third.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pantry.cs" />
     <Compile Include="Recipe.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104150552066_SecondMigration.resx">
       <DependentUpon>202104150552066_SecondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160241371_Third.resx">
+      <DependentUpon>202104160241371_Third.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
