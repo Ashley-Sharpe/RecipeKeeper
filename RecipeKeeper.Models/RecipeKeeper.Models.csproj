@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookCreate.cs" />
     <Compile Include="BookListItem.cs" />
     <Compile Include="FavoriteCreate.cs" />
     <Compile Include="FavoriteDetail.cs" />
