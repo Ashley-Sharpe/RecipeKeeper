@@ -17,17 +17,11 @@ namespace RecipeKeeper.Controllers
         // GET: Ingredient
         public ActionResult Index()
         {
-            var service = new IngredientService();
+            var service = CreateIngredientService();
             var model = service.GetIngredients();
-            
+
             return View(model);
         }
-        //GET: Create Ingredient
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IngredientCreate model)
@@ -35,17 +29,82 @@ namespace RecipeKeeper.Controllers
             if (!ModelState.IsValid)
             {
                return View(model);
-           
-            }
-            var service = new IngredientService();
-            service.CreateIngredient(model);
-            return RedirectToAction("Index");
-
          
+            }
+            var service = CreateIngredientService();
+            service.CreateIngredient(model);
+           
+            if (service.CreateIngredient(model)) 
+            {
+                TempData["SaveResult"] = "Your ingredient was created.";
+                return RedirectToAction("Index");
+            };
 
+            ModelState.AddModelError("", "Ingredient could not be created.");
+            return View(model);
+        } 
 
-            
+        public ActionResult Detail(int id)
+        {
+            var svc = CreateIngredientService();
+            var model = svc.GetIngredientById(id);
+
+            return View(model);
+        }
+        public ActionResult Edit(int id)
+        {
+            var service = CreateIngredientService();
+            var detail = service.GetIngredientById(id);
+            var model =
+                new IngredientEdit
+                {
+                    IngredientId = detail.IngredientId,
+                    IngredientName = detail.IngredientName,
+                    IngredientType = detail.IngredientType
+                };
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IngredientEdit model)
+        {
+            if(!ModelState.IsValid)return View(model);
+
+            if(model.IngredientId != id)
+            {
+                ModelState.AddModelError("", "Id MisMatch");
+                return View(model);
+            }
+            var service = CreateIngredientService();
+
+            if (service.UpdateIngredient(model))
+            {
+                TempData["SaveResult"] = "Your ingredient was updated!";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your ingredient could not be updated.");
+            return View(model);
+        }
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateIngredientService();
+            var model = svc.GetIngredientById(id);
+
+            return View(model);
+        }
+        private static IngredientService CreateIngredientService()
+        {
+            return new IngredientService();
         }
 
+        //GET: Create Ingredient
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+       
+        
     }
 }
