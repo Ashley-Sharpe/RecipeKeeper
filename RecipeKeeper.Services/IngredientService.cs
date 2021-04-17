@@ -25,7 +25,7 @@ namespace RecipeKeeper.service
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<IngredientListItem> GetIngredients() //take ingredient that is being searched for - how to take user input to return recipes
+        public IEnumerable<IngredientListItem> GetIngredients() 
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -35,6 +35,7 @@ namespace RecipeKeeper.service
                     e =>
                     new IngredientListItem
                     {
+                        IngredientId = e.IngredientId,
                         IngredientName = e.IngredientName,
                         IngredientType = e.IngredientType
                     }
@@ -42,6 +43,55 @@ namespace RecipeKeeper.service
 
 
                     return query.ToArray();
+            }
+        }
+        public IngredientDetail GetIngredientById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == id);
+                return
+                    new IngredientDetail
+                    {
+                        IngredientId = entity.IngredientId,
+                        IngredientName = entity.IngredientName,
+                        IngredientType = entity.IngredientType
+
+                    };
+            }
+        }
+        public IEnumerable<IngredientListItem> GetIngredientByIngredientType(string ingredientType)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Ingredients
+                    .Where(e => e.IngredientType == ingredientType)
+                    .Select(e => new IngredientListItem
+                    {
+                        IngredientId = e.IngredientId,
+                        IngredientName = e.IngredientName,
+                        IngredientType = e.IngredientType
+                    });
+                return entity.ToArray();
+                    
+            }
+
+        }
+        public bool UpdateIngredient(IngredientEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == model.IngredientId);
+                entity.IngredientId = model.IngredientId;
+                entity.IngredientName = model.IngredientName;
+                entity.IngredientType = model.IngredientType;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

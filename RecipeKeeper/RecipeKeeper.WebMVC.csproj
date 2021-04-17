@@ -243,6 +243,9 @@
     <Content Include="Views\Ingredient\Index.cshtml" />
     <Content Include="Views\Pantry\Index.cshtml" />
     <Content Include="Views\Ingredient\Create.cshtml" />
+    <Content Include="Views\Ingredient\Detail.cshtml" />
+    <Content Include="Views\Ingredient\Edit.cshtml" />
+    <Content Include="Views\Ingredient\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

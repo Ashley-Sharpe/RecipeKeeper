@@ -1,0 +1,32 @@
+﻿@model RecipeKeeper.Models.IngredientDetail
+
+@{
+        ViewBag.Title = "Detail"; 
+}                             
+<h2>Detail</h2>
+
+<div>
+    <h4>IngredientDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @Html.HiddenFor(model => model.IngredientId)
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientName)
+        </dt>
+        <dd> @Html.DisplayFor(model => model.IngredientName)</dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientType)
+
+        </dt>
+        <dd> @Html.DisplayFor(model => model.IngredientType)</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IngredientId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    
