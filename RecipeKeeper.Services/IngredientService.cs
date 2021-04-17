@@ -94,5 +94,16 @@ namespace RecipeKeeper.service
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool DeleteIngredient(int ingredientid)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == ingredientid);
+                ctx.Ingredients.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

@@ -93,6 +93,18 @@ namespace RecipeKeeper.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateIngredientService();
+            service.DeleteIngredient(id);
+            TempData["SaveResult"] = "Your ingredient was deleted!";
+            return RedirectToAction("Index");
+
+        }
+
         private static IngredientService CreateIngredientService()
         {
             return new IngredientService();
