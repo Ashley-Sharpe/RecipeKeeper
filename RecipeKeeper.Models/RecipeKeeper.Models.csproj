@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="BookListItem.cs" />
     <Compile Include="IngredientCreate.cs" />
+    <Compile Include="IngredientDetail.cs" />
+    <Compile Include="IngredientEdit.cs" />
     <Compile Include="IngredientListItem.cs" />
     <Compile Include="PantryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

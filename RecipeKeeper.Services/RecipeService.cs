@@ -49,7 +49,6 @@ namespace RecipeKeeper.service
                     e =>
                     new RecipeListItem
                     {
-                      
                         RecipeName = e.RecipeName,
                         Ingredients = e.Ingredients
                     }
