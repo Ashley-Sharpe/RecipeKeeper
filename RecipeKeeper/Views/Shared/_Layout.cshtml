@@ -25,9 +25,10 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("Ingredients", "Index","Ingredient")</li>
                         <li>@Html.ActionLink("Recipes", "Index", "Recipe")</li>
                         <li>@Html.ActionLink("Pantry", "Index", "Pantry")</li>
-                        <li>@Html.ActionLink("Ingredients", "Index","Ingredient")</li>
+                        <li>@Html.ActionLink("Books", "Index", "Book")</li>
                     }
                     
                     <li>@Html.ActionLink("About", "About", "Home")</li>
