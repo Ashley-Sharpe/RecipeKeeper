@@ -53,6 +53,20 @@ namespace RecipeKeeper.Controllers
 
             return View(model);
         }
+        public ActionResult Edit(int id)
+        {
+            var service = CreatePantryService();
+            var detail = service.GetPantryDetailsById(id);
+            var model = new PantryEdit
+            {
+                PantryId = detail.PantryId,
+                IngredientName = detail.IngredientName,
+                InStock = detail.InStock,
+                Location = detail.Location,
+                Quantity = detail.Quantity
+            };
+            return View(model);
+        }
         private PantryService CreatePantryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

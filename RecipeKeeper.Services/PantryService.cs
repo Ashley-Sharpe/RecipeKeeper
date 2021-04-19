@@ -70,5 +70,21 @@ namespace RecipeKeeper.service
                 };
             }
         }
+        public bool UpdatePantry(PantryEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Pantry
+                    .Single(e => e.PantryId == model.PantryId && e.OwnerId == _userId);
+                entity.IngredientName = model.IngredientName;
+                entity.InStock = model.InStock;
+                entity.Location = model.Location;
+                entity.Quantity = model.Quantity;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }
