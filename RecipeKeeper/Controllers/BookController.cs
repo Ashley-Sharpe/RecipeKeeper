@@ -86,6 +86,23 @@ namespace RecipeKeeper.Controllers
             return View(model);
             
         }
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateBookService();
+            var model = svc.GetBookById(id);
+
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBook(int id)
+        {
+            var service = CreateBookService();
+            service.DeleteBook(id);
+            return RedirectToAction("Index");
+        }
         private BookService CreateBookService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
