@@ -46,7 +46,13 @@ namespace RecipeKeeper.Controllers
             return View(model);
 
         }
+        public ActionResult Details(int id)
+        {
+            var svc = CreatePantryService();
+            var model = svc.GetPantryById(id);
 
+            return View(model);
+        }
         private PantryService CreatePantryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
