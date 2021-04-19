@@ -253,6 +253,8 @@
     <Content Include="Views\Book\Delete.cshtml" />
     <Content Include="Views\Pantry\Create.cshtml" />
     <Content Include="Views\Pantry\Details.cshtml" />
+    <Content Include="Views\Pantry\Edit.cshtml" />
+    <Content Include="Views\Pantry\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -67,6 +67,48 @@ namespace RecipeKeeper.Controllers
             };
             return View(model);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, PantryEdit model)
+        {
+            if(!ModelState.IsValid) return View();
+
+            if(model.PantryId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+
+            }
+            var service = CreatePantryService();
+
+            if (service.UpdatePantry(model))
+            {
+                TempData["SaveResult"] = "Your Pantry was updated!";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your Pantry could not be updated.");
+            return View(model);
+        }
+        public ActionResult Delete(int id)
+        {
+            var svc = CreatePantryService();
+            var model = svc.GetPantryDetailsById(id);
+
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePantryItem(int id)
+        {
+            var service = CreatePantryService();
+
+            service.DeletePantryItem(id);
+            TempData["SaveResult"] = "Your pantry item was deleted!";
+
+            return RedirectToAction("Index");
+        }
+
         private PantryService CreatePantryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

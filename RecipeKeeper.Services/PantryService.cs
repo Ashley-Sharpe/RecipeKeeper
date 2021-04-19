@@ -86,5 +86,19 @@ namespace RecipeKeeper.service
 
             }
         }
+        public bool DeletePantryItem(int pantryId)
+        {
+            using (var ctx = new ApplicationDbContext()) 
+            {
+                var entity = ctx
+                    .Pantry
+                    .Single(e => e.PantryId == pantryId && e.OwnerId == _userId);
+
+                ctx.Pantry.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }
