@@ -1,4 +1,6 @@
-﻿using RecipeKeeper.Models;
+﻿using Microsoft.AspNet.Identity;
+using RecipeKeeper.Models;
+using RecipeKeeper.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,10 @@ namespace RecipeKeeper.Controllers
         // GET: Book
         public ActionResult Index()
         {
-            var model = new BookListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new BookService(userId);
+            var model = service.GetBooks();
+
             return View(model);
         }
         public ActionResult Create()
@@ -26,11 +31,31 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookCreate model)
         {
-            if (ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) return View(model);
+            
+            var service = CreateBookService();
 
-            }
+           if (service.CreateBook(model))
+            {
+                TempData["SaveResult"] = "Your book was saved sucessfully!";
+                return RedirectToAction("Index");
+            };
+            ModelState.AddModelError("Fail", "Book could not be created.");
+            return View(model);   
+        }
+        public ActionResult Details(int id)
+        {
+            var svc = CreateBookService();
+            var model = svc.GetBookById(id);
+
             return View(model);
+        }
+
+        private BookService CreateBookService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new BookService(userId);
+            return service;
         }
 
     }

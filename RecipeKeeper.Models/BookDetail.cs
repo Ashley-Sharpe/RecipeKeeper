@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace RecipeKeeper.Models
 {
-    public class BookCreate
+    public class BookDetail
+
     {
-      [Required]
-      [MinLength(4, ErrorMessage ="The book title is too short")]
-      [MaxLength(100, ErrorMessage ="The book title is too long!")]
-      [Display(Name ="Book Title")]
+        public int BookId { get; set; }
+        [Display(Name = "Book Title")]
         public string BookName { get; set; }
-       [MaxLength(100,ErrorMessage ="The author's name is too long!")]
         public string Author { get; set; }
-
-        
-
     }
 }

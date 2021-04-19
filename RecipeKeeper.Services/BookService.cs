@@ -51,7 +51,26 @@ namespace RecipeKeeper.service
                 return query.ToArray();
             }
         }
+        public BookDetail GetBookById(int id)
+        {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                            .Books
+                            .Single(e => e.BookId == id && e.OwnerId == _userId);
+                    return
+                        new BookDetail
+                        {
+                            BookId = entity.BookId,
+                            BookName = entity.BookName,
+                            Author = entity.Author
+                            
+                        };
+                }
+            }
+        }
 
     }
 
-}
+
