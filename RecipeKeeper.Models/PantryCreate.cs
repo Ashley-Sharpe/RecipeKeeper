@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeKeeper.Data
+namespace RecipeKeeper.Models
 {
-    public class Pantry
+   public class PantryCreate
     {
-        
-        [Key]
-        public int PantryId { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string IngredientName { get; set; }
         [Required]
         public bool InStock { get; set; }
         [Required]
+        [MaxLength(100)]
         public string Location { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Quantity { get; set; }
-        public Guid OwnerId { get; set; }
+         public string Quantity { get; set; }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="IngredientDetail.cs" />
     <Compile Include="IngredientEdit.cs" />
     <Compile Include="IngredientListItem.cs" />
+    <Compile Include="PantryCreate.cs" />
     <Compile Include="PantryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeCreate.cs" />
