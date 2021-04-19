@@ -31,18 +31,28 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PantryCreate model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreatePantryService();
+
+            if (service.CreatePantry(model))
             {
-                return View(model);
+                TempData["SaveResult"] = "Your pantry was created.";
+                return RedirectToAction("Index");
             }
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PantryService(userId);
+            
+            ModelState.AddModelError("", "Note could not be created.");
 
-            service.CreatePantry(model);
+            return View(model);
 
-            return RedirectToAction("Index");
         }
 
+        private PantryService CreatePantryService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PantryService(userId);
+            return service;
+        }
 
     }
 
