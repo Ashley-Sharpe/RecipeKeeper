@@ -1,4 +1,6 @@
-﻿using RecipeKeeper.Models;
+﻿using Microsoft.AspNet.Identity;
+using RecipeKeeper.Models;
+using RecipeKeeper.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace RecipeKeeper.Controllers
         // GET: Pantry
         public ActionResult Index()
         {
-            var model = new PantryListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PantryService(userId);
+            var model = service.GetPantry();
+
             return View(model);
         }
         //GET
@@ -26,11 +31,16 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PantryCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PantryService(userId);
+
+            service.CreatePantry(model);
+
+            return RedirectToAction("Index");
         }
 
 
