@@ -53,7 +53,7 @@ namespace RecipeKeeper.service
                 return query.ToArray();
             }
         }
-        public PantryDetail GetPantryById(int id)
+        public PantryDetail GetPantryDetailsById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

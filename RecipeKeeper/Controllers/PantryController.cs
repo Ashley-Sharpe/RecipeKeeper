@@ -49,7 +49,7 @@ namespace RecipeKeeper.Controllers
         public ActionResult Details(int id)
         {
             var svc = CreatePantryService();
-            var model = svc.GetPantryById(id);
+            var model = svc.GetPantryDetailsById(id);
 
             return View(model);
         }
