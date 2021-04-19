@@ -33,5 +33,25 @@ namespace RecipeKeeper.service
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<PantryListItem> GetPantry()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Pantry
+                    .Where(e => e.OwnerId == _userId)
+                    .Select(
+                    e => new PantryListItem
+                    {
+                        PantryId = e.PantryId,
+                        IngredientName = e.IngredientName,
+                        InStock = e.InStock,
+                        Location = e.Location,
+                        Quantity = e.Quantity
+                    }
+                    );
+                return query.ToArray();
+            }
+        }
     }
 }

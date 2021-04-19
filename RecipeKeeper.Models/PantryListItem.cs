@@ -13,6 +13,6 @@ namespace RecipeKeeper.Models
         public string IngredientName { get; set; }
         public bool InStock { get; set; }
         public string Location { get; set; }
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
     }
 }
