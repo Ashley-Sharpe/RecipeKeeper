@@ -50,7 +50,42 @@ namespace RecipeKeeper.Controllers
 
             return View(model);
         }
+        public ActionResult Edit(int id)
+        {
+            var service = CreateBookService();
+            var detail = service.GetBookById(id);
+            var model = new BookEdit
+            {
+                BookId = detail.BookId,
+                BookName = detail.BookName,
+                Author = detail.Author
+            };
+            return View(model);
+           
+        }
+       [HttpPost]
+       [ValidateAntiForgeryToken]
 
+        public ActionResult Edit(int id, BookEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.BookId != id)
+            {
+                ModelState.AddModelError("", "Id MisMatch");
+                return View(model);
+            }
+            var service = CreateBookService();
+
+            if (service.UpdateBook(model))
+            {
+                TempData["SaveResult"] = "Your ingredient was updated!";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your ingredient could not be updated.");
+            return View(model);
+            
+        }
         private BookService CreateBookService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
