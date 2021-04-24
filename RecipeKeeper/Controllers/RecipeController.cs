@@ -51,6 +51,22 @@ namespace RecipeKeeper.Controllers
 
             return View(model);
         }
+        public ActionResult Edit(int id)
+        {
+            var service = CreateRecipeService();
+            var detail = service.GetRecipeById(id);
+            var model =
+                new RecipeEdit
+                {
+                    RecipeId = detail.RecipeId,
+                    RecipeName = detail.RecipeName,
+                    RecipeType = detail.RecipeType,
+                    CuisineType = detail.CuisineType,
+                    PageNumber = detail.PageNumber,
+
+                };
+            return View(model);
+        }
 
         private RecipeService CreateRecipeService()
         {

@@ -21,13 +21,13 @@ namespace RecipeKeeper.service
         {
             var entity = new Recipe()
             {
-                 OwnerId = _userId,
-                 RecipeName = model.RecipeName,
-                 Ingredients = model.Ingredients,
-                 BookId = model.BookId,
-                 CuisineType = model.CuisineType,
-                 RecipeType = model.RecipeType,
-                 PageNumber = model.PageNumber
+                OwnerId = _userId,
+                RecipeName = model.RecipeName,
+                Ingredients = model.Ingredients,
+                BookId = model.BookId,
+                CuisineType = model.CuisineType,
+                RecipeType = model.RecipeType,
+                PageNumber = model.PageNumber
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -60,7 +60,6 @@ namespace RecipeKeeper.service
 
         }
 
-        // Update Recipe with ingredients (follows edit logic )
         public RecipeDetail GetRecipeById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -81,14 +80,31 @@ namespace RecipeKeeper.service
                     PageNumber = entity.PageNumber,
                     Ingredients = entity.Ingredients,
                     CuisineType = entity.CuisineType,
-                    BookId =entity.BookId
+                    BookId = entity.BookId
                 };
 
             }
-            //Entity.ingredients needs to be breakpointed and if it doesn't work then call a method (get ingredients by recipeId)
+        }
+        public bool UpdateRecipe(RecipeEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                  .Recipes
+                  .Single(e => e.OwnerId == _userId && e.RecipeId == model.RecipeId);
+                entity.RecipeName = model.RecipeName;
+                entity.RecipeType = model.RecipeType;
+                entity.PageNumber = model.PageNumber;
+                entity.CuisineType = model.CuisineType;
+
+                return ctx.SaveChanges() == 1;
+            }
+        
 
         }
+        //Entity.ingredients needs to be breakpointed and if it doesn't work then call a method (get ingredients by recipeId)
 
+        // Update Recipe with ingredients (follows edit logic ) this is NOT DONE YET will go above comment
     }
 }
 
