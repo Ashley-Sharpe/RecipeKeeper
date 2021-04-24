@@ -12,17 +12,16 @@ namespace RecipeKeeper.Models
     {
         [Required]
         public string RecipeName { get; set; }
-        [Required]
+        
         public List<Ingredient> Ingredients { get; set; }
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
-        [Required]
-        [Display(Description = "Cooking or Baking recipe.")]
+        
+        [Display(Name= "Cooking or Baking recipe?")]
         public string RecipeType { get; set; }
-        [Required]
+        
         public string CuisineType { get; set; }
-        [Required]
-        public string AuthorName { get; set; }
-
+        
+        public int BookId { get; set; }
     }
 }

@@ -12,9 +12,18 @@ namespace RecipeKeeper.Data
     {
         [Key]
         public int RecipeId { get; set; }
+       [ForeignKey(nameof(Book))]
+        public int BookId { get; set;}
+        public virtual Book Book { get; set; }
+        public virtual ICollection<Ingredient> ListOfIngredients { get; set; }
+        public Recipe()
+        {
+            ListOfIngredients = new HashSet<Ingredient>();
+        }
+        
         public Guid OwnerId { get; set; }
         public string RecipeName { get; set; }
-        [Required]
+       
         public List<Ingredient> Ingredients { get; set; }
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
@@ -23,16 +32,6 @@ namespace RecipeKeeper.Data
         public string RecipeType { get; set; }
         [Required]
         public string CuisineType { get; set; }
-        [Required]
-        public string AuthorName { get; set; }
-        [ForeignKey("Book")]
-        public int BookId { get; set; }
-        public virtual Book Book { get; set; }
-
-        public virtual ICollection<Ingredient> ListOfIngredients { get; set; }
-        public Recipe()
-        {
-            ListOfIngredients = new HashSet<Ingredient>();
-        }
+        
     }
 }

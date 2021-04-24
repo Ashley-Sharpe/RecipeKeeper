@@ -26,20 +26,16 @@ namespace RecipeKeeper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IngredientCreate model)
         {
-            if (!ModelState.IsValid)
-            {
-               return View(model);
+            if (!ModelState.IsValid) return View(model);
          
-            }
-            var service = CreateIngredientService();
-            service.CreateIngredient(model);
+             var service = CreateIngredientService();
+           
            
             if (service.CreateIngredient(model)) 
             {
                 TempData["SaveResult"] = "Your ingredient was created.";
                 return RedirectToAction("Index");
             };
-
             ModelState.AddModelError("", "Ingredient could not be created.");
             return View(model);
         } 

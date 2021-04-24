@@ -9,10 +9,21 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+        @ViewBag.SaveResult
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
-        
+            @Html.DisplayNameFor(model => model.RecipeId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecipeName)
@@ -29,29 +40,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-      
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingredients)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PageNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecipeId}) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecipeId}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecipeId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingredients)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecipeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecipeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecipeId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -21,14 +21,13 @@ namespace RecipeKeeper.service
         {
             var entity = new Recipe()
             {
-                OwnerId = _userId,
-                RecipeName = model.RecipeName,
-                Ingredients = model.Ingredients,
-                BookName = model.BookName,
-                CuisineType = model.CuisineType,
-                RecipeType = model.RecipeType,
-                PageNumber = model.PageNumber,
-                AuthorName = model.AuthorName,
+                 OwnerId = _userId,
+                 RecipeName = model.RecipeName,
+                 Ingredients = model.Ingredients,
+                 BookId = model.BookId,
+                 CuisineType = model.CuisineType,
+                 RecipeType = model.RecipeType,
+                 PageNumber = model.PageNumber
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -40,7 +39,7 @@ namespace RecipeKeeper.service
         }
         public IEnumerable<RecipeListItem> GetRecipes()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .Recipes
@@ -49,13 +48,61 @@ namespace RecipeKeeper.service
                     e =>
                     new RecipeListItem
                     {
+                        RecipeId = e.RecipeId,
                         RecipeName = e.RecipeName,
-                        Ingredients = e.Ingredients
+                        Ingredients = e.Ingredients,
+                        BookName = e.Book.BookName,
+                        PageNumber = e.PageNumber
                     }
                     );
                 return query.ToArray();
             }
+
+        }
+
+        // Update Recipe with ingredients (follows edit logic )
+        public RecipeDetail GetRecipeById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Recipes
+                    .Single(e => e.RecipeId == id && e.OwnerId == _userId);
+
+
+                return
+                new RecipeDetail
+                {
+                    RecipeId = entity.RecipeId,
+                    RecipeName = entity.RecipeName,
+                    RecipeType = entity.RecipeType,
+                    BookName = entity.Book.BookName,
+                    Author = entity.Book.Author,
+                    PageNumber = entity.PageNumber,
+                    Ingredients = entity.Ingredients,
+                    CuisineType = entity.CuisineType,
+                    BookId =entity.BookId
+                };
+
+            }
+            //Entity.ingredients needs to be breakpointed and if it doesn't work then call a method (get ingredients by recipeId)
+
         }
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

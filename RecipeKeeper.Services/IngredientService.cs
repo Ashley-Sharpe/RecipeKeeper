@@ -12,8 +12,7 @@ namespace RecipeKeeper.service
     {
         public bool CreateIngredient(IngredientCreate model)
         {
-            var entity =
-                  new Ingredient()
+            var entity = new Ingredient()
                   {
                       IngredientName = model.IngredientName,
                       IngredientType = model.IngredientType
@@ -60,6 +59,7 @@ namespace RecipeKeeper.service
                         IngredientType = entity.IngredientType
 
                     };
+                // access the ingredients for the specific recipe 2. For each loop it (to display the ingredient list item) 
             }
         }
         public IEnumerable<IngredientListItem> GetIngredientByIngredientType(string ingredientType)

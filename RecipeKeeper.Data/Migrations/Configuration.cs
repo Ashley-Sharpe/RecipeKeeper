@@ -9,7 +9,7 @@ namespace RecipeKeeper.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "RecipeKeeper.Data.ApplicationDbContext";
         }
 

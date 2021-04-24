@@ -255,6 +255,8 @@
     <Content Include="Views\Pantry\Details.cshtml" />
     <Content Include="Views\Pantry\Edit.cshtml" />
     <Content Include="Views\Pantry\Delete.cshtml" />
+    <Content Include="Views\Recipe\Create.cshtml" />
+    <Content Include="Views\Recipe\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,20 +27,37 @@ namespace RecipeKeeper.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(RecipeCreate model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateRecipeService();
+            
+
+            if (service.CreateRecipe(model))
             {
-                return View(model);
-            }
+                TempData["SaveResult"] = "Your recipe was created!";
+                return RedirectToAction("Index");   
+            };
+            ModelState.AddModelError("", "Recipe could not be created.");
+            return View(model);
+        }
+        public ActionResult Details(int id)
+        {
+            var svc = CreateRecipeService();
+            var model = svc.GetRecipeById(id);
+
+            return View(model);
+        }
+
+        private RecipeService CreateRecipeService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new RecipeService(userId);
-            service.CreateRecipe(model);
-
-            return RedirectToAction("Index");
+            return service;
         }
+
     }
 }

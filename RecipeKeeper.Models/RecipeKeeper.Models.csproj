@@ -72,6 +72,7 @@
     <Compile Include="PantryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeCreate.cs" />
+    <Compile Include="RecipeDetail.cs" />
     <Compile Include="RecipeListItem.cs" />
   </ItemGroup>
   <ItemGroup>
