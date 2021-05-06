@@ -10,13 +10,7 @@
     <h4>RecipeDetail</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RecipeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RecipeId)
-        </dd>
+        @Html.HiddenFor(model => model.RecipeId)
 
         <dt>
             @Html.DisplayNameFor(model => model.BookName)
