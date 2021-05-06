@@ -12,7 +12,7 @@ namespace RecipeKeeper.Models
     public class RecipeDetail
     {
         public int RecipeId { get; set; }
-       
+       public int IngredientId { get; set; }
         public string RecipeName { get; set; }
        
         public List<Ingredient> Ingredients { get; set; }

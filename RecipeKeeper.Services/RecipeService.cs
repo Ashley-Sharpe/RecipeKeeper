@@ -23,7 +23,7 @@ namespace RecipeKeeper.service
             {
                 OwnerId = _userId,
                 RecipeName = model.RecipeName,
-                Ingredients = model.Ingredients,
+                //ListOfIngredients = model.Ingredients.Add(),
                 BookId = model.BookId,
                 CuisineType = model.CuisineType,
                 RecipeType = model.RecipeType,
@@ -31,82 +31,109 @@ namespace RecipeKeeper.service
             };
             using (var ctx = new ApplicationDbContext())
             {
+                var oneIng = ctx.Ingredients.Single(x => x.IngredientId == model.IngredientId);
+                entity.ListOfIngredients.Add(oneIng);
                 ctx.Recipes.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
             }
-
-
-        }
-        public IEnumerable<RecipeListItem> GetRecipes()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query = ctx
-                    .Recipes
-                    .Where(e => e.OwnerId == _userId)
-                    .Select(
-                    e =>
-                    new RecipeListItem
-                    {
-                        RecipeId = e.RecipeId,
-                        RecipeName = e.RecipeName,
-                        Ingredients = e.Ingredients,
-                        BookName = e.Book.BookName,
-                        PageNumber = e.PageNumber
-                    }
-                    );
-                return query.ToArray();
-            }
-
+            //entity.Ingredient.Add(model.ingredient)
         }
 
-        public RecipeDetail GetRecipeById(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
+            public IEnumerable<RecipeListItem> GetRecipes()
             {
-                var entity = ctx
-                    .Recipes
-                    .Single(e => e.RecipeId == id && e.OwnerId == _userId);
-
-
-                return
-                new RecipeDetail
+                using (var ctx = new ApplicationDbContext())
                 {
-                    RecipeId = entity.RecipeId,
-                    RecipeName = entity.RecipeName,
-                    RecipeType = entity.RecipeType,
-                    BookName = entity.Book.BookName,
-                    Author = entity.Book.Author,
-                    PageNumber = entity.PageNumber,
-                    Ingredients = entity.Ingredients,
-                    CuisineType = entity.CuisineType,
-                    BookId = entity.BookId
-                };
+                    var query = ctx
+                        .Recipes
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                        e =>
+                        new RecipeListItem
+                        {
+                            RecipeId = e.RecipeId,
+                            RecipeName = e.RecipeName,
+                            Ingredients = e.ListOfIngredients,
+                            BookName = e.Book.BookName,
+                            PageNumber = e.PageNumber
+                        }
+                        );
+                    return query.ToArray();
+                }
 
             }
-        }
-        public bool UpdateRecipe(RecipeEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
+
+            public RecipeDetail GetRecipeById(int id)
             {
-                var entity = ctx
-                  .Recipes
-                  .Single(e => e.OwnerId == _userId && e.RecipeId == model.RecipeId);
-                entity.RecipeName = model.RecipeName;
-                entity.RecipeType = model.RecipeType;
-                entity.PageNumber = model.PageNumber;
-                entity.CuisineType = model.CuisineType;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity = ctx
+                        .Recipes
+                        .Single(e => e.RecipeId == id && e.OwnerId == _userId);
 
-                return ctx.SaveChanges() == 1;
+
+                    return
+                    new RecipeDetail
+                    {
+                        RecipeId = entity.RecipeId,
+                        RecipeName = entity.RecipeName,
+                        RecipeType = entity.RecipeType,
+                        BookName = entity.Book.BookName,
+                        Author = entity.Book.Author,
+                        PageNumber = entity.PageNumber,
+                        Ingredients = entity.ListOfIngredients.ToList(),
+                        CuisineType = entity.CuisineType,
+                        BookId = entity.BookId
+                    };
+
+                }
             }
-        
+            public bool UpdateRecipe(RecipeEdit model)
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity = ctx
+                      .Recipes
+                      .Single(e => e.OwnerId == _userId && e.RecipeId == model.RecipeId);
+                    entity.RecipeName = model.RecipeName;
+                    entity.RecipeType = model.RecipeType;
+                    entity.PageNumber = model.PageNumber;
+                    entity.CuisineType = model.CuisineType;
 
+
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+
+            public bool UpdateRecipeWithIngredients(RecipeEdit model)
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var recipe = ctx
+                        .Recipes
+                        .Single(e => e.OwnerId == _userId && e.RecipeId == model.RecipeId);
+                    var ingredient = ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == model.IngredientId);
+                recipe.ListOfIngredients.Add(ingredient);
+                    
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+            public bool DeleteRecipe(int recipeid)
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity = ctx
+                        .Recipes
+                        .Single(e => e.RecipeId == recipeid && e.OwnerId == _userId);
+                    ctx.Recipes.Remove(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+            
         }
-        //Entity.ingredients needs to be breakpointed and if it doesn't work then call a method (get ingredients by recipeId)
-
-        // Update Recipe with ingredients (follows edit logic ) this is NOT DONE YET will go above comment
     }
-}
+
 
 
 

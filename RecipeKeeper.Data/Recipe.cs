@@ -12,20 +12,22 @@ namespace RecipeKeeper.Data
     {
         [Key]
         public int RecipeId { get; set; }
-       [ForeignKey(nameof(Book))]
-        public int BookId { get; set;}
+        [ForeignKey(nameof(Book))]
+        public int BookId { get; set; }
         public virtual Book Book { get; set; }
+        
+        //public int IngredientId { get; set; }
         public virtual ICollection<Ingredient> ListOfIngredients { get; set; }
         public Recipe()
         {
             ListOfIngredients = new HashSet<Ingredient>();
         }
-        
+
         public Guid OwnerId { get; set; }
         public string RecipeName { get; set; }
-       
-        public List<Ingredient> Ingredients { get; set; }
-        public string BookName { get; set; }
+        
+        //public List<Ingredient> Ingredients { get; set; }
+
         public int? PageNumber { get; set; }
         [Required]
         [Display(Description = "Cooking or Baking recipe.")]

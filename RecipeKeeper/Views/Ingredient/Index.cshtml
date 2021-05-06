@@ -43,6 +43,7 @@
                 @Html.DisplayFor(modelItem => item.IngredientType)
             </td>
             <td>
+                @Html.ActionLink("Find Recipes!", "GetRecipeByIngredient", new { id = item.IngredientId }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.IngredientId }) |
                 @Html.ActionLink("Detail", "Detail", new { id = item.IngredientId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.IngredientId })

@@ -79,10 +79,10 @@ namespace RecipeKeeper.Controllers
 
             if (service.UpdateBook(model))
             {
-                TempData["SaveResult"] = "Your ingredient was updated!";
+                TempData["SaveResult"] = "Your book was updated!";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Your ingredient could not be updated.");
+            ModelState.AddModelError("", "Your book could not be updated.");
             return View(model);
             
         }

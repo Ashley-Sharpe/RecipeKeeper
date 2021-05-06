@@ -1,0 +1,45 @@
+﻿@model RecipeKeeper.Models.RecipesByIngredient
+
+@{
+    ViewBag.Title = "GetRecipeByIngredient";
+}
+
+<h2>GetRecipeByIngredient</h2>
+
+<div>
+    <h4>RecipesByIngredient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngredientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngredientName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ListOfRecipes)
+        </dt>
+        @foreach (var item in Model.ListOfRecipes)
+        {
+            <dd>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </dd>
+        }
+
+
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>

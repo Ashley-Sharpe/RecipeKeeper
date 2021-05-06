@@ -10,18 +10,18 @@ namespace RecipeKeeper.Models
 {
     public class RecipeEdit
     {
-        
-        public int RecipeId { get; set; }
-        
-        public string RecipeName { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
 
+        public int RecipeId { get; set; }
+
+        public string RecipeName { get; set; }
+        
         public string BookName { get; set; }
         public int? PageNumber { get; set; }
-        
+
         [Display(Description = "Cooking or Baking recipe.")]
         public string RecipeType { get; set; }
-        
+        public List<Ingredient> Ingredients{get;set;}
+        public int IngredientId { get; set; }
         public string CuisineType { get; set; }
 
     }

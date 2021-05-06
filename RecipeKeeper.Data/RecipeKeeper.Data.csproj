@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -58,25 +61,13 @@
     <Compile Include="Favorite.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Ingredient.cs" />
-    <Compile Include="Migrations\202104190421429_InitialCreate.cs" />
-    <Compile Include="Migrations\202104190421429_InitialCreate.Designer.cs">
-      <DependentUpon>202104190421429_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202105032029466_InitialCreate.cs" />
+    <Compile Include="Migrations\202105032029466_InitialCreate.designer.cs">
+      <DependentUpon>202105032029466_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104192106218_ChangedPantry.cs" />
-    <Compile Include="Migrations\202104192106218_ChangedPantry.Designer.cs">
-      <DependentUpon>202104192106218_ChangedPantry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104210029331_AddsQuantityToIngredient.cs" />
-    <Compile Include="Migrations\202104210029331_AddsQuantityToIngredient.Designer.cs">
-      <DependentUpon>202104210029331_AddsQuantityToIngredient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104210106149_TakeAwayRequirement.cs" />
-    <Compile Include="Migrations\202104210106149_TakeAwayRequirement.Designer.cs">
-      <DependentUpon>202104210106149_TakeAwayRequirement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104210436470_TheMillionth.cs" />
-    <Compile Include="Migrations\202104210436470_TheMillionth.Designer.cs">
-      <DependentUpon>202104210436470_TheMillionth.cs</DependentUpon>
+    <Compile Include="Migrations\202105040200006_Billionth.cs" />
+    <Compile Include="Migrations\202105040200006_Billionth.designer.cs">
+      <DependentUpon>202105040200006_Billionth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pantry.cs" />
@@ -88,21 +79,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104190421429_InitialCreate.resx">
-      <DependentUpon>202104190421429_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105032029466_InitialCreate.resx">
+      <DependentUpon>202105032029466_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104192106218_ChangedPantry.resx">
-      <DependentUpon>202104192106218_ChangedPantry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104210029331_AddsQuantityToIngredient.resx">
-      <DependentUpon>202104210029331_AddsQuantityToIngredient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104210106149_TakeAwayRequirement.resx">
-      <DependentUpon>202104210106149_TakeAwayRequirement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104210436470_TheMillionth.resx">
-      <DependentUpon>202104210436470_TheMillionth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105040200006_Billionth.resx">
+      <DependentUpon>202105040200006_Billionth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

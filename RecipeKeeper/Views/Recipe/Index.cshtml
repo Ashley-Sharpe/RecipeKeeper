@@ -28,9 +28,9 @@
         <th>
             @Html.DisplayNameFor(model => model.RecipeName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Ingredients)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.BookName)
         </th>
@@ -49,9 +49,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RecipeName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Ingredients)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.BookName)
             </td>
@@ -59,7 +59,8 @@
                 @Html.DisplayFor(modelItem => item.PageNumber)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RecipeId }) |
+              
+                @Html.ActionLink("Edit Recipe", "EditRecipe", new { id = item.RecipeId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.RecipeId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.RecipeId })
             </td>

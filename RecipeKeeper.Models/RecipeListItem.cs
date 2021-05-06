@@ -15,7 +15,7 @@ namespace RecipeKeeper.Models
         public string RecipeName { get; set; }
         public string CuisineType { get; set; }
         public string RecipeType { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        public IEnumerable<Ingredient> Ingredients { get; set; }
         [Display(Name="Book Title")]
         public string BookName { get; set; }
         public int? PageNumber { get; set; }

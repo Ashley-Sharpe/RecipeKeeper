@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RecipeKeeper.Data;
-using static RecipeKeeper.Data.Ingredient;
+
 using RecipeKeeper.service;
 
 namespace RecipeKeeper.Controllers
@@ -47,6 +47,15 @@ namespace RecipeKeeper.Controllers
 
             return View(model);
         }
+
+        public ActionResult GetRecipeByIngredient(int id)
+        {
+            var svc = CreateIngredientService();
+            var model = svc.GetRecipesByIngredient(id);
+
+            return View(model);
+        }
+
         public ActionResult Edit(int id)
         {
             var service = CreateIngredientService();

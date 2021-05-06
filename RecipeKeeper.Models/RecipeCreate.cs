@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace RecipeKeeper.Models
 {
@@ -12,9 +13,10 @@ namespace RecipeKeeper.Models
     {
         [Required]
         public string RecipeName { get; set; }
-        
+        public int IngredientId { get; set; }
+        public int IngredientName { get; set; }
         public List<Ingredient> Ingredients { get; set; }
-        public string BookName { get; set; }
+      
         public int? PageNumber { get; set; }
         
         [Display(Name= "Cooking or Baking recipe?")]

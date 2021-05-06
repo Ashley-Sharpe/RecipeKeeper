@@ -10,21 +10,38 @@ namespace RecipeKeeper.service
 {
     public class IngredientService
     {
-        public bool CreateIngredient(IngredientCreate model)
+        public RecipesByIngredient GetRecipesByIngredient(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == id);
+                return
+                    new RecipesByIngredient
+                    {
+                        IngredientId = entity.IngredientId,
+                        IngredientName = entity.IngredientName,
+                        ListOfRecipes = entity.ListOfRecipes
+
+                    };
+            }
+        }
+                public bool CreateIngredient(IngredientCreate model)
         {
             var entity = new Ingredient()
-                  {
-                      IngredientName = model.IngredientName,
-                      IngredientType = model.IngredientType
+            {
+                IngredientName = model.IngredientName,
+                IngredientType = model.IngredientType
 
-                  };
+            };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Ingredients.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<IngredientListItem> GetIngredients() 
+        public IEnumerable<IngredientListItem> GetIngredients()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -41,7 +58,15 @@ namespace RecipeKeeper.service
                     );
 
 
-                    return query.ToArray();
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<Ingredient> GetIngredientList()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Ingredients.ToList();
             }
         }
         public IngredientDetail GetIngredientById(int id)
@@ -61,6 +86,7 @@ namespace RecipeKeeper.service
                     };
                 // access the ingredients for the specific recipe 2. For each loop it (to display the ingredient list item) 
             }
+
         }
         public IEnumerable<IngredientListItem> GetIngredientByIngredientType(string ingredientType)
         {
@@ -76,13 +102,14 @@ namespace RecipeKeeper.service
                         IngredientType = e.IngredientType
                     });
                 return entity.ToArray();
-                    
+
             }
 
         }
+
         public bool UpdateIngredient(IngredientEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx
                     .Ingredients
@@ -96,7 +123,7 @@ namespace RecipeKeeper.service
         }
         public bool DeleteIngredient(int ingredientid)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx
                     .Ingredients

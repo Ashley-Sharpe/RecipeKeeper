@@ -16,8 +16,9 @@ namespace RecipeKeeper.Data
         [Required]
         public string IngredientName { get; set; }
         public string IngredientType { get; set; }
-        public int Quantity { get; set; }
-        public List<Recipe> Recipes {get;set;}
+        //public List<Ingredient> Ingredients { get; set; }
+        //public int Quantity { get; set; }
+        //public List<Recipe> Recipes {get;set;}
 
         public virtual ICollection<Recipe> ListOfRecipes { get; set; }
         public Ingredient()
